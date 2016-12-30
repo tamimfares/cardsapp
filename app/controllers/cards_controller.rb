@@ -1,5 +1,7 @@
 class CardsController < ApplicationController
 
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
+
   def index
     @cards = Card.all.order("created_at DESC")
   end
@@ -20,16 +22,12 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = Card.find(params[:id])
   end
 
   def edit
-    @card = Card.find(params[:id])
   end
 
   def update
-    @card = Card.find(params[:id])
-
     if @card.update(card_params)
       redirect_to(@card, :flash => :success)
     else
@@ -39,12 +37,15 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find(params[:id])
     @card.destroy
     redirect_to(cards_path, :flash => :warning)
   end
 
   private
+    def set_card
+      @card = Card.find(params[:id])
+    end
+
     def card_params
       params.require(:card).permit(:title, :content)
     end
