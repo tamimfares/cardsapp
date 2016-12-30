@@ -1,0 +1,25 @@
+<h1 class="text-xs-center">Cards List</h1>
+
+<div class="row text-xs-right bmarg">
+  <%= link_to "Add New Card", new_card_path, class: "btn btn-success" %>
+</div>
+
+<div class="row">
+  <% @cards.each do |card| %>
+    <div class="card text-xs-center">
+      <div class="card-header text-xs-right">
+        Created <%= time_ago_in_words(card.created_at) %> ago
+      </div>
+      <div class="card-block">
+        <h4 class="card-title"><%= card.title %></h4>
+        <p class="card-text"><%= truncate(card.content, length: 50) %></p>
+        <%= link_to "View Card", card, class: "btn btn-primary btn-sm" %>
+        <%= link_to "Edit Card", edit_card_path(card), class: "btn btn-warning btn-sm" %>
+        <%= link_to "Delete Card", card, method: :delete, data: { confirm: "Are you sure!?" }, class: "btn btn-danger btn-sm" %>
+      </div>
+      <div class="card-footer text-muted">
+
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -10,8 +10,11 @@
 
   <body>
     <%= render "shared/nav" %>
-
     <div class="container">
+      <div id="flash_messages"><%= flash_messages(:close, :fade, :heading) %></div>
+    </div>
+    <div class="container">
+
       <%= yield %>
     </div>
 

@@ -36,6 +36,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 gem 'simple_form'
+gem "bootstrap_flash_messages", "~> 1.0.1"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

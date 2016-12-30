@@ -1,1 +1,8 @@
 <h1>Card Details</h1>
+
+<h4><%= @card.title %></h4>
+<small>Created: <%= time_ago_in_words(@card.created_at) %> ago</small>
+<p><%= simple_format(@card.content) %></p>
+
+<%= link_to "Cards List", cards_path, class: "btn btn-primary" %>
+<%= link_to "Edit Card", edit_card_path(@card), class: "btn btn-warning" %>
